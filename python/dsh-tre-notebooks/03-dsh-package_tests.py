@@ -60,7 +60,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
     def log_message(self, format, *args):
         pass  # silence default request logging
 
-PORT = 8765
+PORT = 8080
 httpd = socketserver.TCPServer(("localhost", PORT), Handler)
 server_thread = threading.Thread(target=httpd.serve_forever, daemon=True)
 server_thread.start()
