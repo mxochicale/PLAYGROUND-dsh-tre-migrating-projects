@@ -1,0 +1,94 @@
+[project]
+name = "jupyter-environment"
+version = "0.1.0"
+description = "Jupyter environment with all required packages"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "jupyter-events==0.12.0",
+    "jupyter-lsp==2.2.5",
+    "jupyter-server==2.16.0",
+    "jupyter-server-terminals==0.5.3",
+    "jupyterhub==5.3.0",
+    "jupyterlab==4.4.4",
+    "jupyterlab-pygments==0.3.0",
+    "jupyterlab-server==2.27.3",
+    # "libmambapy==1.5.3", #If libmambapy is not essential for your Jupyter setup
+    "Mako==1.2.3",
+    "MarkupSafe==3.0.2",
+    "matplotlib-inline==0.1.6",
+    # "menuinst==2.0.2", #menuinst is another conda-specific package that's not available on PyPI. 
+    "mistune==3.1.2",
+    "nbclient==0.10.2",
+    "nbconvert==7.16.6",
+    "nbformat==5.10.4",
+    "nest-asyncio==1.6.0",
+    "notebook==7.4.4",
+    "notebook-shim==0.2.4",
+    "oauthlib==3.3.1",
+    "overrides==7.4.0",
+    "packaging==23.1",
+    "pamela==1.2.0",
+    "pandocfilters==1.5.0",
+    "parso==0.8.4",
+    "pexpect==4.9.0",
+    "pip==23.3.1",
+    "platformdirs==3.10.0",
+    "pluggy==1.0.0",
+    "prometheus-client==0.21.1",
+    "prompt-toolkit==3.0.43",
+    # "psutil==5.9.0", #Cross-platform lib for process and system monitoring.
+    "ptyprocess==0.7.0",
+    "pure-eval==0.2.2",
+    # "pycosat==0.6.6", #pycosat is typically used for SAT solving and may not be essential for Jupyter. 
+    "pycparser==2.21",
+    "pycurl==7.45.6",
+    "pydantic==2.11.7",
+    "pydantic-core==2.33.2",
+    "Pygments==2.19.1",
+    "PySocks==1.7.1",
+    "python-dateutil==2.9.0.post0",
+    "python-json-logger==3.2.1",
+    "PyYAML==6.0.2",
+    "pyzmq==26.2.0",
+    "referencing==0.30.2",
+    "requests==2.31.0",
+    "rfc3339-validator==0.1.4",
+    "rfc3986-validator==0.1.1",
+    "rpds-py==0.22.3",
+    "ruamel-yaml==0.17.21",
+    "Send2Trash==1.8.2",
+    "setuptools==68.2.2",
+    "six==1.17.0",
+    "sniffio==1.3.0",
+    "soupsieve==2.5",
+    "SQLAlchemy==2.0.41",
+    "stack-data==0.2.0",
+    "sudospawner==0.5.2",
+    "terminado==0.17.1",
+    "tinycss2==1.4.0",
+    "tornado==6.5.1",
+    "tqdm==4.65.0",
+    "traitlets==5.14.3",
+    "truststore==0.8.0",
+    "typing-extensions==4.12.2",
+    "typing-inspection==0.4.0",
+    "urllib3==2.1.0",
+    "wcwidth==0.2.13",
+    "webencodings==0.5.1",
+    "websocket-client==1.8.0",
+    "wheel==0.41.2",
+    # "zstandard==0.19.0", # Python bindings for interfacing with the Zstandard compression library.
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.uv]
+# Optional: Add any uv-specific configuration here
+# For example, to use alternative indexes:
+# index-url = "https://pypi.org/simple"
+
+[tool.uv.sources]
+# Optional: Override package sources if needed
