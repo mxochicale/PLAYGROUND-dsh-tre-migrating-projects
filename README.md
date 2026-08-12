@@ -1,10 +1,10 @@
-# test-dhs-tre-migrated-git-projects
+# PLAYGROUND-dsh-tre-migrating-projects
 
 ## python
 
 ## r
 
-## clone repo
+## Clone repo
 ```bash
-git clone git@github.com:mxochicale/test-dhs-tre-migrated-git-projects.git
+git clone git@github.com:mxochicale/PLAYGROUND-dsh-tre-migrating-projects.git
 ```
