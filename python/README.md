@@ -40,6 +40,16 @@ jupyter nbconvert --to script <notebook-filename.ipynb>
 ```
 
 
+## Docker
+```bash
+docker build -t my_container .
+```
+
+```bash
+docker run -it --rm my_container bash
+```
+
+
 ## Clone repo
 ```bash
 git clone https://github.com/mxochicale/intro-to-deep-learning-carpentries-lab.git
