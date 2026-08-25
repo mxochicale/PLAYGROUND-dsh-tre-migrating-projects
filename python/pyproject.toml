@@ -3,8 +3,9 @@ name = "jupyter-environment"
 version = "0.1.0"
 description = "Jupyter environment with all required packages"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.12"
 dependencies = [
+    "alembic==1.16.2",
     "jupyter-events==0.12.0",
     "jupyter-lsp==2.2.5",
     "jupyter-server==2.16.0",
