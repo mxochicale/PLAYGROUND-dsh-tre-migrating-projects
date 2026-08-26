@@ -1,8 +1,6 @@
 # PLAYGROUND-dsh-tre-migrating-projects
 
-## python
-
-## r
+Repository serving as a playground to run, practise, break things and gain hands-on experience with good practice for DSH-to-TRE migration of projects, including those in Python and R.
 
 ## Clone repo
 ```bash
