@@ -1,12 +1,12 @@
 # python project 
 
-## Migration user pipeline
+## Migration user end-to-end pipeline
 ```mermaid
 flowchart LR
-    A["<b>DSH</b><br/>Prepare & test"] --> B["<b>DSH</b><br/>Package code and dependencies"]
-    B --> C["<b>Local Machine</b><br/>Create Docker container"]
-    C --> D["<b>ARC TRE</b><br/>Ingress container image and data"]
-    D --> E["<b>ARC TRE</b><br/>Validate code works"]
+    A["<b>DSH</b><br/>1. Prepare & test"] --> B["<b>DSH</b><br/>2. Package code and dependencies"]
+    B --> C["<b>Local Machine</b><br/>3. Create Docker container"]
+    C --> D["<b>ARC TRE</b><br/>4. Ingress container image and data"]
+    D --> E["<b>ARC TRE</b><br/>5. Validate code works"]
 ```
 
 ## Local development
