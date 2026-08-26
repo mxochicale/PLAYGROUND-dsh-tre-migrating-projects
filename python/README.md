@@ -26,9 +26,10 @@ Five steps, three environments:
 
 Log in to your DSH (Data Safe Haven) and prepare the files to be compressed into an archive.
 
-Dependency tracking
+**Dependency tracking**
 
-To ensure reproducibility, it is recommended that your project includes a pyproject.toml file to track package versions, as shown in the example below. Alternatively, you can create a requirements.txt file listing all dependencies alongside their versions.
+To ensure reproducibility, it is recommended that your project includes a pyproject.toml file to track package versions. 
+Alternatively, you can create a requirements.txt file listing all dependencies alongside their versions.
 
 Whichever approach you choose, you can cross-check it against the packages installed in your Jupyter Lab session using:
 
@@ -36,13 +37,18 @@ Whichever approach you choose, you can cross-check it against the packages insta
 pip list
 ```
 
-Organising your project
+**Organising your project**
 
-For easier migration and scalability across environments, it is good practice to consolidate your files into a single repository before extraction. This allows you to:
+For easier migration and scalability across environments, it is good practice to consolidate your files into a single repository before extraction.
+
+It is worth testing this process both in the DSH and on your local machine, to confirm that you are packaging and compressing all relevant files — including Python package dependencies, scripts, and, where applicable, unit tests.
+
+Generally speaking, this allows you to:
 
 Clone the project cleanly into any environment
 Record its version and a timestamp for traceability
 Ensure the packaged copy can always be traced back to an exact commit
+
 
 For example:
 ```bash
