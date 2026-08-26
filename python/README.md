@@ -93,10 +93,15 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 Create a virtual environment and install the project's dependencies:
 
 ```bash
-uv venv
-uv pip install -e .
+uv venv --python 3.12.1
+uv pip install -e ".[test]"
 ```
 
+Activate environment and run unit tests
+```bash
+source .venv/bin/activate
+pytest tests/test_pyproject_versions.py -v
+```
 Activate the environment and launch Jupyter Lab:
 
 ```bash
@@ -131,7 +136,7 @@ jupyter nbconvert --to script <notebook-filename.ipynb>
 Tagging the image with the version, git commit, and build date makes it easy to trace later.
 
 ```bash
-VERSION=0.0.1
+VERSION=0.0.2
 GIT_SHA=$(git rev-parse --short HEAD)
 BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
@@ -143,12 +148,27 @@ docker build \
   -t my_container:${VERSION} .
 ```
 
+Shows built image
+```bash
+$docker images
+IMAGE                     ID             DISK USAGE   CONTENT SIZE   EXTRA
+my_container:0.0.1        4bc2c9cfe93b       2.08GB          507MB
+my_container:0.0.2        15c34e2b552a       2.51GB          589MB
+```
+
 ### Test the image locally
 
+Run docker file with the defatul unit test
+```
+docker run -it --rm my_container:$VERSION
+```
+
+Using bash
 ```bash
-docker run -it --rm my_container:0.0.1 bash
+docker run -it --rm my_container:$VERSION bash
 # then, inside the container:
 # python dsh-tre-code/00-dsh-jupyter-lab-session.py
+# pytest tests/test_pyproject_versions.py -v
 ```
 
 ### Save and checksum the image
@@ -157,24 +177,27 @@ Save the image to a tarball and generate a checksum, so you (and the TRE reviewe
 
 ```bash
 OUTDIR=~/Downloads
-NAME=my_container_0.0.1.tar.gz
+IMAGENAME=my_container_$VERSION.tar.gz
 
-docker save my_container:0.0.1 | gzip > "${OUTDIR}/${NAME}"
-cd "${OUTDIR}" && sha256sum "${NAME}" > "${NAME}.sha256"
+docker save my_container:$VERSION | gzip > "${OUTDIR}/${IMAGENAME}"
+cd "${OUTDIR}" && sha256sum "${IMAGENAME}" > "${IMAGENAME}.sha256"
 ```
 
 ---
 
 ## Step 4. ARC TRE: Bring in the container image and data
 
-Upload `my_container_0.0.1.tar.gz` and its checksum file to the TRE through the [Airlock](https://tre.arc.ucl.ac.uk/). Then, from the TRE desktop:
+Upload `my_container_$VERSION.tar.gz` and its checksum file to the TRE through the [Airlock](https://tre.arc.ucl.ac.uk/). 
+
+Then, from the terminal in the TRE desktop:
 
 ```bash
+VERSION=0.0.2
 INDIR=~/shared/inbound/$(whoami)
 cd "${INDIR}"
 
-sha256sum -c my_container_0.0.1.tar.gz.sha256
-docker load -i my_container_0.0.1.tar.gz
+sha256sum -c my_container_$VERSION.tar.gz.sha256
+docker load -i my_container_$VERSION.tar.gz
 ```
 
 `sha256sum -c` confirms the file matches the checksum generated in Step 3, before you load it.
@@ -186,9 +209,15 @@ docker load -i my_container_0.0.1.tar.gz
 Run the container inside the TRE exactly as you did locally, to confirm it behaves the same way:
 
 ```bash
-docker run -it --rm my_container:0.0.1 bash
+docker run -it docker.io/library/my_container:$VERSION
+```
+
+Run bash
+```bash
+docker run -it docker.io/library/my_container:$VERSION bash
 # then, inside the container:
 # python dsh-tre-code/00-dsh-jupyter-lab-session.py
+# pytest tests/test_pyproject_versions.py -v
 ```
 
 If this runs without errors and produces the expected output, the migration is complete.
