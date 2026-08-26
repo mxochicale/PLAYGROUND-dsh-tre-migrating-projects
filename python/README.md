@@ -9,7 +9,24 @@ flowchart LR
     D --> E["<b>ARC TRE</b><br/>5. Validate code works"]
 ```
 
-## Local development
+## 1 DSH: Prepare, test and package code and dependencies
+
+* Compress and uncompress project
+```
+git clone https://github.com/mxochicale/PLAYGROUND-dsh-tre-migrating-projects.git
+cd PLAYGROUND-dsh-tre-migrating-projects.git
+VERSION=$(git rev-parse --short HEAD)
+TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+cd ..
+zip -r "githubproject-${VERSION}-${TIMESTAMP}.zip" test-dhs-tre-migrated-git-projects
+```
+* Unzip file
+```bash
+unzip *.zip
+```
+
+
+## 3. Local machine development
 
 ### Install uv (macOS and Linux)
 ```bash
@@ -76,6 +93,7 @@ docker save my_container:0.0.1 | gzip > "${OUTDIR}/${NAME}"
 cd "${OUTDIR}" && sha256sum "${NAME}" > "${NAME}.sha256"
 ```
 
+## 4. ARC TRE: Ingress container 
 
 * Upload my-container.tar to the TRE through the [Airlock](https://tre.arc.ucl.ac.uk/), open desktop run the TRE desktop:
 ```bash
@@ -84,4 +102,14 @@ cd "${INDIR}" && sha256sum -c my_container_0.0.1.tar.gz.sha256
 docker load -i my_container_0.0.1.tar.gz
 ```
 
+## 5. ARC TRE: Validate that code works
 
+* Launch bash container
+```bash
+docker run -it --rm my_container:0.0.1 bash
+#RUN: python dsh-tre-code/00-dsh-jupyter-lab-session.py
+```
+
+
+
+ 
