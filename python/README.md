@@ -1,6 +1,6 @@
-# python project 
+# End-to-end migration pipeline with a python project 
 
-## Migration user end-to-end pipeline
+## End-to-end User Pipeline
 ```mermaid
 flowchart LR
     A["<b>DSH</b><br/>1. Prepare & test"] --> B["<b>DSH</b><br/>2. Package code and dependencies"]
