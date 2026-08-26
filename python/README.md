@@ -45,9 +45,9 @@ It is worth testing this process both in the DSH and on your local machine, to c
 
 Generally speaking, this allows you to:
 
-Clone the project cleanly into any environment
-Record its version and a timestamp for traceability
-Ensure the packaged copy can always be traced back to an exact commit
+* Clone the project cleanly into any environment
+* Record its version and a timestamp for traceability
+* Ensure the packaged copy can always be traced back to an exact commit
 
 
 For example:
