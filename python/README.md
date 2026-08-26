@@ -22,19 +22,59 @@ Five steps, three environments:
 
 ---
 
-## Step 1. DSH: Prepare and test your code
+## Step 1. DSH: Prepare and Test Your Code
 
-Clone the project and note down its version and a timestamp, so the packaged copy is traceable back to an exact commit.
+Log in to your DSH (Data Safe Haven) and prepare the files to be compressed into an archive.
 
+Dependency tracking
+
+To ensure reproducibility, it is recommended that your project includes a pyproject.toml file to track package versions, as shown in the example below. Alternatively, you can create a requirements.txt file listing all dependencies alongside their versions.
+
+Whichever approach you choose, you can cross-check it against the packages installed in your Jupyter Lab session using:
+
+```bash
+pip list
+```
+
+Organising your project
+
+For easier migration and scalability across environments, it is good practice to consolidate your files into a single repository before extraction. This allows you to:
+
+Clone the project cleanly into any environment
+Record its version and a timestamp for traceability
+Ensure the packaged copy can always be traced back to an exact commit
+
+For example:
 ```bash
 git clone https://github.com/mxochicale/PLAYGROUND-dsh-tre-migrating-projects.git
 cd PLAYGROUND-dsh-tre-migrating-projects
-
 VERSION=$(git rev-parse --short HEAD)
 TIMESTAMP=$(date +%Y%m%d-%H%M%S)
 ```
 
-At this point, develop and test your code as normal in the DSH.
+At this point, develop and test your code as normal within the DSH.
+
+
+## Step 2. DSH: Package the code and dependencies
+
+Compress the project folder into a versioned, timestamped zip file:
+
+```bash
+cd ..
+zip -r "githubproject-${VERSION}-${TIMESTAMP}.zip" PLAYGROUND-dsh-tre-migrating-projects
+```
+
+> **Note:** zip the same folder you cloned into (here, `PLAYGROUND-dsh-tre-migrating-projects`). Double-check the folder name matches your project before running this.
+
+To unzip it again elsewhere:
+
+```bash
+unzip githubproject-*.zip
+```
+
+---
+
+## Step 3. Local machine: python virtual environment and build the Docker container
 
 ### Working with a virtual environment (uv)
 
@@ -79,29 +119,6 @@ If your work is in a notebook, convert it to a plain Python script before packag
 ```bash
 jupyter nbconvert --to script <notebook-filename.ipynb>
 ```
-
----
-
-## Step 2. DSH: Package the code and dependencies
-
-Compress the project folder into a versioned, timestamped zip file:
-
-```bash
-cd ..
-zip -r "githubproject-${VERSION}-${TIMESTAMP}.zip" PLAYGROUND-dsh-tre-migrating-projects
-```
-
-> **Note:** zip the same folder you cloned into (here, `PLAYGROUND-dsh-tre-migrating-projects`). Double-check the folder name matches your project before running this.
-
-To unzip it again elsewhere:
-
-```bash
-unzip githubproject-*.zip
-```
-
----
-
-## Step 3. Local machine: build the Docker container
 
 ### Build the image with metadata baked in
 
