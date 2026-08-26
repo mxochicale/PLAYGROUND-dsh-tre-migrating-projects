@@ -14,15 +14,15 @@ flowchart LR
 
 Five steps, three environments:
 
-1. **DSH** – prepare and test your code.
-2. **DSH** – package the code and its dependencies.
-3. **Local machine** – build the code into a Docker container.
-4. **ARC TRE** – bring the container image and data in through the Airlock.
-5. **ARC TRE** – confirm the code runs correctly.
+1. **DSH** prepare and test your code.
+2. **DSH** package the code and its dependencies.
+3. **Local machine** build the code into a Docker container.
+4. **ARC TRE** bring the container image and data in through the Airlock.
+5. **ARC TRE** confirm the code runs correctly.
 
 ---
 
-## Step 1 – DSH: Prepare and test your code
+## Step 1. DSH: Prepare and test your code
 
 Clone the project and note down its version and a timestamp, so the packaged copy is traceable back to an exact commit.
 
@@ -82,7 +82,7 @@ jupyter nbconvert --to script <notebook-filename.ipynb>
 
 ---
 
-## Step 2 – DSH: Package the code and dependencies
+## Step 2. DSH: Package the code and dependencies
 
 Compress the project folder into a versioned, timestamped zip file:
 
@@ -101,7 +101,7 @@ unzip githubproject-*.zip
 
 ---
 
-## Step 3 – Local machine: build the Docker container
+## Step 3. Local machine: build the Docker container
 
 ### Build the image with metadata baked in
 
@@ -142,7 +142,7 @@ cd "${OUTDIR}" && sha256sum "${NAME}" > "${NAME}.sha256"
 
 ---
 
-## Step 4 – ARC TRE: Bring in the container image and data
+## Step 4. ARC TRE: Bring in the container image and data
 
 Upload `my_container_0.0.1.tar.gz` and its checksum file to the TRE through the [Airlock](https://tre.arc.ucl.ac.uk/). Then, from the TRE desktop:
 
@@ -158,7 +158,7 @@ docker load -i my_container_0.0.1.tar.gz
 
 ---
 
-## Step 5 – ARC TRE: Check the code works
+## Step 5. ARC TRE: Check the code works
 
 Run the container inside the TRE exactly as you did locally, to confirm it behaves the same way:
 
