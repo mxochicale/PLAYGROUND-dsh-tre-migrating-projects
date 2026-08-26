@@ -15,5 +15,8 @@ ENV PATH="/workspace/venv/bin:$PATH"
 
 COPY pyproject.toml ./
 RUN pip install --no-cache-dir --upgrade pip \
-    && pip install --no-cache-dir .
+    && pip install --no-cache-dir ".[test]"
 COPY . .
+
+CMD ["pytest", "tests/test_pyproject_versions.py", "-v"]
+

@@ -1,7 +1,7 @@
 [project]
-name = "jupyter-environment"
-version = "0.1.0"
-description = "Jupyter environment with all required packages"
+name = "python-environment"
+version = "0.1.1"
+description = "Python environment with all required packages"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
@@ -83,7 +83,7 @@ dependencies = [
     "pexpect==4.9.0",
     "pip==23.3.1",
     "platformdirs==3.10.0",
-    "pluggy==1.0.0",
+    "pluggy==1.6.0", #pytest==9.1.1 requires pluggy>=1.5
     "prometheus-client==0.21.1",
     "prompt-toolkit==3.0.43",
     # "psutil==5.9.0", #Cross-platform lib for process and system monitoring.
@@ -128,6 +128,11 @@ dependencies = [
     "websocket-client==1.8.0",
     "wheel==0.41.2",
     # "zstandard==0.19.0", # Python bindings for interfacing with the Zstandard compression library.
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest==9.1.1",
 ]
 
 [build-system]
