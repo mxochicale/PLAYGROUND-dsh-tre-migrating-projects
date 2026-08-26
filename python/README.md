@@ -41,7 +41,7 @@ pip list
 
 For easier migration and scalability across environments, it is good practice to consolidate your files into a single repository before extraction.
 
-It is worth testing this process both in the DSH and on your local machine, to confirm that you are packaging and compressing all relevant files — including Python package dependencies, scripts, and, where applicable, unit tests.
+It is worth testing this process both in the DSH and on your local machine, to confirm that you are packaging and compressing all relevant files, including Python package dependencies, scripts, and, where applicable, unit tests.
 
 Generally speaking, this allows you to:
 
