@@ -1,5 +1,14 @@
 # python project 
 
+## Migration user pipeline
+```mermaid
+flowchart LR
+    A["<b>DSH</b><br/>Prepare & test"] --> B["<b>DSH</b><br/>Package code and dependencies"]
+    B --> C["<b>Local Machine</b><br/>Create Docker container"]
+    C --> D["<b>ARC TRE</b><br/>Ingress container image and data"]
+    D --> E["<b>ARC TRE</b><br/>Validate code works"]
+```
+
 ## Local development
 
 ### Install uv (macOS and Linux)
